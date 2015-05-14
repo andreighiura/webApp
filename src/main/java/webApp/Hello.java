@@ -3,7 +3,7 @@ package webApp;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath(value = "res")
+@ApplicationPath("res")
 public class Hello extends Application {
 
 }

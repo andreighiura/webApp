@@ -4,7 +4,7 @@
 	<groupId>com.cloudtroopers.inverntoryApp</groupId>
 	<artifactId>webApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webServer</name>
+	<name>webApp</name>
 	<packaging>war</packaging>
 	<properties>
 		<hibernate.version>4.3.6.Final</hibernate.version>
