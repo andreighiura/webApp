@@ -1,6 +1,6 @@
-package webApp;
-
 /*
+ * package webApp;
+ * 
  * import javax.persistence.EntityManagerFactory; import
  * javax.persistence.Persistence;
  * 

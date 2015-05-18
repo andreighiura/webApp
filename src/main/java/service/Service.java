@@ -5,19 +5,24 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
+import resources.EMF;
 import dao.ItemsDAO;
 import dao.UserDAO;
 import entities.Item;
 import entities.User;
 
+@Path("users")
 public class Service {
 	private ItemsDAO itemDAO;
 	private UserDAO userDAO;
 	private EntityManagerFactory emf;
 
-	public Service(EntityManagerFactory emf) {
-		this.emf = emf;
+	public Service() {
+		this.emf = EMF.emf;
 		itemDAO = new ItemsDAO();
 		userDAO = new UserDAO();
 
@@ -104,6 +109,9 @@ public class Service {
 		}
 	}
 
+	@GET
+	@Path("getUsers")
+	@Produces("text/xml")
 	public String selectAllUsers() {
 		String s = "";
 		EntityManager em = null;
@@ -123,7 +131,7 @@ public class Service {
 		return s;
 	}
 
-	public String selectAllItems() {
+	public String selectAllItemsString() {
 		String s = "";
 		EntityManager em = null;
 
@@ -134,6 +142,22 @@ public class Service {
 				s += u.toString();
 
 			}
+		} finally {
+
+			em.close();
+		}
+		return s;
+	}
+
+	public List<Item> selectAllItems() {
+		List<Item> s;
+		EntityManager em = null;
+
+		try {
+
+			em = this.createConnection();
+			s = itemDAO.selectAll(em);
+
 		} finally {
 
 			em.close();

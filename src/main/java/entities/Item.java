@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Item {
 
 	@Id
@@ -54,6 +56,7 @@ public class Item {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName() {
 		return name;
