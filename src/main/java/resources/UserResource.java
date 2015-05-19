@@ -1,10 +1,14 @@
 package resources;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import service.Service;
+import entities.User;
 
 @Path("user")
 public class UserResource {
@@ -22,11 +26,9 @@ public class UserResource {
 
 	@GET
 	@Path("getUsers")
-	@Produces("MediaType.APPLICATION_JSON")
-	public String getUsers() {
-		String s = "";
+	@Produces({ MediaType.APPLICATION_JSON })
+	public List<User> getUsers() {
 		Service svc = new Service();
-		s = svc.selectAllUsers();
-		return s;
+		return svc.selectAllUsers();
 	}
 }

@@ -1,16 +1,12 @@
 package entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class User implements Serializable {
-
-	private static final long serialVersionUID = 4264275756764372958L;
+public class User {
 
 	String userName;
 	@Id

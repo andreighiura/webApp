@@ -112,7 +112,7 @@ public class Service {
 	@GET
 	@Path("getUsers")
 	@Produces("text/xml")
-	public String selectAllUsers() {
+	public String selectAllUsersString() {
 		String s = "";
 		EntityManager em = null;
 
@@ -124,6 +124,21 @@ public class Service {
 				s += u.toString();
 
 			}
+		} finally {
+
+			em.close();
+		}
+		return s;
+	}
+
+	public List<User> selectAllUsers() {
+		EntityManager em = null;
+		List<User> s = null;
+		try {
+
+			em = this.createConnection();
+
+			s = userDAO.selectAll(em);
 		} finally {
 
 			em.close();
