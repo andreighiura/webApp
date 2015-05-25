@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: webApp
+Bundle-SymbolicName: webApp
+Bundle-Version: 1.0.0.qualifier
+Export-Package: dao,
+ entities,
+ resources,
+ service,
+ webApp
