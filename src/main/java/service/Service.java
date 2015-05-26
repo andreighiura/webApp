@@ -2,8 +2,8 @@ package service;
 
 import java.util.List;
 
-import javax.annotation.ManagedBean;
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
 import dao.ItemsDAO;
@@ -12,7 +12,7 @@ import entities.Item;
 import entities.User;
 
 @Stateless
-@ManagedBean
+@ManagedBean(name = "service")
 public class Service {
 
 	@Inject
@@ -81,11 +81,11 @@ public class Service {
 		return s;
 	}
 
-	public String getPosesions(String userName) {
+	public String getPosesions(String usrName) {
 
 		String s = "";
 
-		for (Item i : itemDAO.getPosesions(userName)) {
+		for (Item i : itemDAO.getPosesions(usrName)) {
 
 			s += i.toString();
 		}

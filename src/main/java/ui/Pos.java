@@ -37,7 +37,10 @@ public class Pos extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.print("Items owned:");
-		// out.print(svc.getPosesions(request.getParameter("userName")));
+		String enteredValue;
+		enteredValue = request.getParameter("enteredValue");
+		response.setContentType("text/html");
+		out.print(enteredValue);
 	}
 
 	/**
@@ -46,7 +49,14 @@ public class Pos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
+		PrintWriter out = response.getWriter();
+		String enteredValue;
+		enteredValue = request.getParameter("enteredValue");
+		out.print("Items owned by " + enteredValue + ":\n");
+
+		// response.setContentType("text/html");
+		out.print(svc.getPosesions(enteredValue));
+
+	}
 }

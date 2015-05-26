@@ -28,8 +28,10 @@ public class ItemsDAO {
 	public List<Item> getPosesions(String userName) {
 		@SuppressWarnings("unchecked")
 		List<Item> list = em
-				.createQuery("from Item i WHERE i.user.userName=(:userName)")
-				.setParameter(":userName", userName).getResultList();
+				.createQuery(
+						"SELECT i FROM Item i WHERE i.user.userName=(:userName) ",
+						Item.class).setParameter("userName", userName)
+				.getResultList();
 		return list;
 	}
 
